@@ -48,11 +48,10 @@ jobs:
     name: 'Validate Tag Push'
     runs-on: 'ubuntu-latest'
     permissions:
-      contents: write  # Needed to create draft release
-    timeout-minutes: 1
+      contents: write  # Needed to draft a release
+    timeout-minutes: 5
     outputs:
       tag: "${{ steps.tag-validate.outputs.tag_name }}"
-      should_promote: "${{ steps.check-release.outputs.should_promote }}"
     steps:
       # Harden the runner used by this workflow
       # yamllint disable-line rule:line-length
@@ -72,19 +71,12 @@ jobs:
         # yamllint disable-line rule:line-length
         uses: lfreleng-actions/tag-validate-action@461d187a53b5de27b068c2cea5af972c085a4a6a  # v1.0.2
         with:
-          require_type: 'semver'
-          require_signed: 'ambivalent'
           token: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: 'Reject development tags'
-        if: steps.tag-validate.outputs.development_tag == 'true'
-        shell: bash
-        run: |
-          # Reject development tags
-          echo "Development tag pushed; aborting release workflow 🛑"
-          echo "Development tag pushed; aborting release workflow 🛑" \
-            >> "$GITHUB_STEP_SUMMARY"
-          exit 1
+          require_type: 'semver'
+          reject_development: 'true'
+          require_github: 'true'
+          # yamllint disable-line rule:line-length
+          require_signed: 'ssh,gpg-unverifiable'  # Cannot verify GPG without key
 
       - name: 'Ensure draft release exists'
         id: 'ensure-release'
@@ -100,10 +92,8 @@ jobs:
             IS_DRAFT=$(echo "$RELEASE_INFO" | jq -r '.isDraft')
             if [ "$IS_DRAFT" = "true" ]; then
               echo "Draft release for tag $TAG already exists"
-              echo "should_promote=true" >> "$GITHUB_OUTPUT"
             else
               echo "Published release for tag $TAG already exists"
-              echo "should_promote=false" >> "$GITHUB_OUTPUT"
             fi
           else
             echo "Creating draft release for tag $TAG"
@@ -111,18 +101,7 @@ jobs:
               --draft \
               --title "Release $TAG" \
               --notes "Automated release for $TAG"
-            echo "should_promote=true" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: 'Set check-release output for compatibility'
-        id: 'check-release'
-        shell: bash
-        # yamllint disable rule:line-length
-        run: |
-          # Set output for downstream jobs
-          echo "should_promote=${{ steps.ensure-release.outputs.should_promote }}" \
-            >> "$GITHUB_OUTPUT"
-        # yamllint enable rule:line-length
 
   python-metadata:
     name: 'Extract Project Metadata'
@@ -685,7 +664,6 @@ jobs:
   promote-release:
     name: 'Promote Draft Release'
     # yamllint disable-line rule:line-length
-    if: needs.tag-validate.outputs.should_promote == 'true'
     needs:
       - 'tag-validate'
       - 'pypi'
