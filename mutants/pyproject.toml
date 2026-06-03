@@ -85,8 +85,8 @@ dev = [
 [project.urls]
 Homepage = "http://www.mozilla.org/projects/security/pki/python-nss-ng"
 Documentation = "http://www.mozilla.org/projects/security/pki/python-nss-ng"
-Repository = "https://github.com/ModeSevenIndustrialSolutions/python-nss-ng"
-Issues = "https://github.com/ModeSevenIndustrialSolutions/python-nss-ng/issues"
+Repository = "https://github.com/lfreleng-actions/python-nss-ng"
+Issues = "https://github.com/lfreleng-actions/python-nss-ng/issues"
 
 [tool.meson-python.args]
 # Meson build arguments can be specified here if needed
