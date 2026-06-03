@@ -51,7 +51,7 @@ See [QUICKSTART.md](QUICKSTART.md) for detailed setup instructions.
 
 ```bash
 # Clone the repository
-git clone https://github.com/ModeSevenIndustrialSolutions/python-nss-ng.git
+git clone https://github.com/lfreleng-actions/python-nss-ng.git
 cd python-nss-ng
 
 # Install system dependencies (Ubuntu/Debian)
@@ -342,7 +342,7 @@ Releases are handled automatically via `build-test-release.yaml`:
 
 ## Getting Help
 
-- **Issues:** [GitHub Issues](https://github.com/ModeSevenIndustrialSolutions/python-nss-ng/issues)
+- **Issues:** [GitHub Issues](https://github.com/lfreleng-actions/python-nss-ng/issues)
 - **Discussions:** Use GitHub Discussions for questions
 - **Email:** Maintainers listed in `pyproject.toml`
 

@@ -5,8 +5,8 @@ SPDX-FileCopyrightText: 2025 The Linux Foundation
 
 # python-nss-ng
 
-[![Platform Compatibility](https://github.com/ModeSevenIndustrialSolutions/python-nss-ng/actions/workflows/compatibility.yaml/badge.svg)](https://github.com/ModeSevenIndustrialSolutions/python-nss-ng/actions/workflows/compatibility.yaml)
-[![CI/CD Pipeline](https://github.com/ModeSevenIndustrialSolutions/python-nss-ng/actions/workflows/build-test.yaml/badge.svg)](https://github.com/ModeSevenIndustrialSolutions/python-nss-ng/actions/workflows/build-test.yaml)
+[![Platform Compatibility](https://github.com/lfreleng-actions/python-nss-ng/actions/workflows/compatibility.yaml/badge.svg)](https://github.com/lfreleng-actions/python-nss-ng/actions/workflows/compatibility.yaml)
+[![CI/CD Pipeline](https://github.com/lfreleng-actions/python-nss-ng/actions/workflows/build-test.yaml/badge.svg)](https://github.com/lfreleng-actions/python-nss-ng/actions/workflows/build-test.yaml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MPL-2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
@@ -297,5 +297,5 @@ the NSS compatibility issues and modernize the C code are welcome!
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/ModeSevenIndustrialSolutions/python-nss-ng/issues)
-- **Repository**: [GitHub Repository](https://github.com/ModeSevenIndustrialSolutions/python-nss-ng)
+- **Issues**: [GitHub Issues](https://github.com/lfreleng-actions/python-nss-ng/issues)
+- **Repository**: [GitHub Repository](https://github.com/lfreleng-actions/python-nss-ng)
