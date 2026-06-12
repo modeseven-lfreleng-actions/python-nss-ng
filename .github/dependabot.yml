@@ -11,6 +11,8 @@ updates:
     commit-message:
       prefix: "Chore"
     open-pull-requests-limit: 15
+    cooldown:
+      default-days: 7
   - package-ecosystem: "uv"
     directory: "/"
     schedule:
@@ -18,6 +20,8 @@ updates:
     commit-message:
       prefix: "Chore"
     open-pull-requests-limit: 15
+    cooldown:
+      default-days: 7
     exclude-paths:
       - "LICENSES/**"
     ignore:
