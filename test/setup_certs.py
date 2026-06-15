@@ -667,7 +667,7 @@ def setup_certs(args):
             logging.info('Certificate nickname "%s"\n%s', nickname, format_cert(options, nickname))
 
     logging.info("---------- Summary ----------")
-    logging.info('NSS database name="%s", password="%s"', options.db_name, options.db_passwd)
+    logging.info('NSS database name="%s", password="[REDACTED]"', options.db_name)
     logging.info("system FIPS mode=%s", get_system_fips_enabled())
     logging.info("DB FIPS mode=%s", get_db_fips_enabled(options.db_name))
     logging.info('CA nickname="%s", CA subject="%s"', options.ca_nickname, options.ca_subject)
