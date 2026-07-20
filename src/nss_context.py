@@ -29,6 +29,8 @@ import logging
 from collections.abc import Callable, Generator
 from typing import Any
 
+# aislop-ignore-file ai-slop/hallucinated-import -- "nss" is this package's own compiled C-extension module (built from py_nss.c)
+
 logger = logging.getLogger(__name__)
 
 
