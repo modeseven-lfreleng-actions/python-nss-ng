@@ -127,7 +127,6 @@ def check_message_safety(message: str) -> LogSensitivity:
     """
     message_lower = message.lower()
 
-    # Check for forbidden patterns
     for pattern in FORBIDDEN_LOG_PATTERNS:
         if pattern in message_lower:
             return LogSensitivity.SENSITIVE
@@ -272,7 +271,6 @@ def log_exception_safely(
         # Log only the exception type and context
         msg = f"{context}: {exc_type} occurred (details redacted for security)"
     elif sensitivity == LogSensitivity.REDACTED:
-        # Log with redaction
         msg = f"{context}: {exc_type}: {redact_message(exc_message)}"
     else:
         # Safe to log
@@ -329,23 +327,20 @@ class SecureExceptionHandler:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_type is not None:
-            # Log the exception securely
+
             def logger_fn(msg: str) -> None:
                 self.logger.log(self.log_level, msg)
 
             log_exception_safely(logger_fn, exc_val, self.context)
 
-            # Return False to re-raise, True to suppress
             return not self.reraise
         return None
 
 
 # Example usage patterns
 if __name__ == "__main__":
-    # Configure logging
     logging.basicConfig(level=logging.DEBUG)
 
-    # Create secure logger
     logger = get_secure_logger(__name__)
 
     # Safe logging

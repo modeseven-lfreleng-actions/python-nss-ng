@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: MPL-2.0
 # SPDX-FileCopyrightText: Copyright (c) 2010-2025 python-nss-ng contributors
 
+# aislop-ignore-file ai-slop/unused-import -- "import" lines flagged here are RST code examples inside a documentation string, not real imports (ruff F401 validates the real ones)
+
 import sys
 from importlib.metadata import PackageNotFoundError
 from importlib.metadata import version as _pkg_version
@@ -154,7 +156,6 @@ Things All NSS programs must do
 
 - Import the NSS/NSPR modules::
 
-    from nss.error import NSPRError
     import nss.io as io
     import nss.nss as nss
     import nss.ssl as ssl
